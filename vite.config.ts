@@ -18,7 +18,7 @@ export default defineConfig({
         background_color: '#f7f9f8',
         display: 'standalone',
         orientation: 'any',
-        start_url: '/kaio/app',
+        start_url: '/kaio/#/app/today',
         scope: '/kaio/',
         icons: [
           {

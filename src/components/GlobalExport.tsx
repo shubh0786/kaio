@@ -2,6 +2,8 @@ import { useState, useRef } from 'react';
 import { Download, Upload, X, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { format } from 'date-fns';
 import { isKaioStorageKey } from '../lib/storageKeys';
+import { saveStr } from '../lib/storage';
+import { STORAGE_KEYS } from '../lib/storageKeys';
 
 export default function GlobalExport({ recorder, onClose }: { recorder: string; onClose: () => void }) {
   const fileRef = useRef<HTMLInputElement>(null);
@@ -42,6 +44,7 @@ export default function GlobalExport({ recorder, onClose }: { recorder: string; 
     a.download = `kaio-full-backup-${format(new Date(), 'yyyy-MM-dd-HHmm')}.json`;
     a.click();
     URL.revokeObjectURL(url);
+    saveStr(STORAGE_KEYS.lastBackupAt, new Date().toISOString());
   };
 
   const handleRestore = (e: React.ChangeEvent<HTMLInputElement>) => {

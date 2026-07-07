@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { load, save } from '../lib/storage';
+import { load, save, isDemoMode } from '../lib/storage';
 import {
   ChevronDown, ChevronRight, Calendar, CheckCheck, X, Folder, UtensilsCrossed,
 } from 'lucide-react';
@@ -110,8 +110,9 @@ export default function KitchenTaskManager({ onClose }: Props) {
   const [store, setStore] = useState<Store>(() => {
     const s = load<Store | null>(KEY, null);
     if (s?.tasks?.length) return s;
-    save(KEY, DEFAULT_STORE);
-    return DEFAULT_STORE;
+    const seed: Store = isDemoMode() ? DEFAULT_STORE : { groups: [], folders: [], tasks: [] };
+    save(KEY, seed);
+    return seed;
   });
   const [openGroups, setOpenGroups] = useState<Record<KitchenGroupId, boolean>>({
     food: true, equipment: false, team: false, facility: false,

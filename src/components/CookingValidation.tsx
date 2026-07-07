@@ -439,7 +439,7 @@ export default function CookingValidation({ recorder }: { recorder: string }) {
               <div className="px-5 pt-2 pb-3 flex items-start gap-2 border-b shrink-0" style={{ borderColor: 'var(--border)' }}>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-base font-bold leading-tight" style={{ color: 'var(--text)' }}>
-                    {targetMethod?.dishName || 'Dish'} (example). – {provingLabel}
+                    {targetMethod?.dishName || 'Dish'} – {provingLabel}
                   </h3>
                   <div className="flex flex-wrap items-center gap-2 mt-2">
                     <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-md bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200">

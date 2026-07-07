@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
-import { load, save } from '../lib/storage';
+import { load, save, isDemoMode } from '../lib/storage';
 import { ChevronDown, ChevronUp, X } from 'lucide-react';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { STORAGE_KEYS } from '../lib/storageKeys';
 
 const KEY = STORAGE_KEYS.missedTasks;
@@ -74,7 +74,8 @@ type Props = { onClose: () => void };
 export default function MissedTasksAlerts({ onClose }: Props) {
   const [categories, setCategories] = useState<MissedCategory[]>(() => {
     const d = load<MissedCategory[] | null>(KEY, null);
-    return d?.length ? d : defaultData();
+    if (d?.length) return d;
+    return isDemoMode() ? defaultData() : [];
   });
   const [open, setOpen] = useState<Record<string, boolean>>({ pest: true });
   const [modal, setModal] = useState<{ cat: MissedCategory; task: MissedTaskRow } | null>(null);
@@ -146,7 +147,7 @@ export default function MissedTasksAlerts({ onClose }: Props) {
         <p className="text-xs opacity-70 mb-2">Showing expired tasks / missed entries from all categories</p>
         <div className="flex flex-wrap items-baseline justify-between gap-2 mb-4">
           <div>
-            <p className="text-xl font-bold">Wednesday 1 April</p>
+            <p className="text-xl font-bold">{format(new Date(), 'EEEE d MMMM')}</p>
             <p className="text-sm opacity-80 mt-1">Total daily missed tasks: {totalMissed}</p>
             <p className="text-sm opacity-80">Total daily missed categories: {categories.length}</p>
           </div>
@@ -230,7 +231,7 @@ export default function MissedTasksAlerts({ onClose }: Props) {
             <div className="flex justify-between items-start mb-2">
               <div>
                 <h3 className="text-base font-bold">{modal.task.name}</h3>
-                <p className="text-xs opacity-60 mt-1">Task due: Wednesday 1 April</p>
+                <p className="text-xs opacity-60 mt-1">Task due: {modal.task.due ? format(parseISO(modal.task.due), 'EEEE d MMMM') : 'Today'}</p>
               </div>
               <button type="button" onClick={() => setModal(null)} className="p-1 opacity-60"><X size={18} /></button>
             </div>

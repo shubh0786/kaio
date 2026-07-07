@@ -16,3 +16,12 @@ export function loadStr(key: string, fallback = ''): string {
 export function saveStr(key: string, val: string) {
   localStorage.setItem(key, val);
 }
+
+/** Demo mode gates all seed/sample data. Off in production. */
+export function isDemoMode(): boolean {
+  return loadStr('kaio-demo-mode') === '1';
+}
+
+export function setDemoMode(on: boolean) {
+  saveStr('kaio-demo-mode', on ? '1' : '0');
+}

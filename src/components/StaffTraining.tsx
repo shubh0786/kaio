@@ -60,7 +60,7 @@ export default function StaffTraining({
   recorder,
   auditMode = false,
   onLeaveAudit,
-  venueTitle = 'Majestic — Whangaparaoa Audit Report',
+  venueTitle,
 }: {
   recorder: string;
   auditMode?: boolean;
@@ -219,7 +219,7 @@ export default function StaffTraining({
     return (
       <div className="audit-shell min-h-screen pb-24" style={{ color: 'var(--text-secondary)' }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
-          <p className="text-xs font-semibold tracking-[0.18em] uppercase mb-4" style={{ color: 'var(--text-faint)' }}>{venueTitle}</p>
+          {venueTitle && <p className="text-xs font-semibold tracking-[0.18em] uppercase mb-4" style={{ color: 'var(--text-faint)' }}>{venueTitle}</p>}
           <div
             className="rounded-2xl border overflow-hidden p-4 md:p-6 shadow-lg"
             style={{ borderColor: 'var(--border)', background: 'var(--bg-card)', boxShadow: 'var(--shadow-card)' }}

@@ -1,5 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { getRoute, navigateTo, type KaioRoute } from './lib/route';
+import { loadStr } from './lib/storage';
+import { STORAGE_KEYS } from './lib/storageKeys';
 
 const LandingPage = lazy(() => import('./components/LandingPage'));
 const App = lazy(() => import('./App'));
@@ -13,16 +15,25 @@ function RouteLoader() {
 }
 
 export default function Root() {
-  const [route, setRoute] = useState<KaioRoute>(() => getRoute());
+  const [route, setRoute] = useState<KaioRoute>(() => getRoute().route);
 
   useEffect(() => {
-    const onPop = () => setRoute(getRoute());
+    // Apply persisted theme before the app shell mounts so the landing is theme-correct.
+    document.documentElement.classList.toggle('dark', loadStr(STORAGE_KEYS.theme) === 'dark');
+  }, []);
+
+  useEffect(() => {
+    const onPop = () => setRoute(getRoute().route);
+    window.addEventListener('hashchange', onPop);
     window.addEventListener('popstate', onPop);
-    return () => window.removeEventListener('popstate', onPop);
+    return () => {
+      window.removeEventListener('hashchange', onPop);
+      window.removeEventListener('popstate', onPop);
+    };
   }, []);
 
   const enterApp = () => {
-    navigateTo('app');
+    navigateTo('app', 'today');
     setRoute('app');
   };
 

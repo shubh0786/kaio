@@ -6,6 +6,7 @@ import {
 import { saveAs } from 'file-saver';
 import { useLocalStorage } from './useLocalStorage';
 import { lastAutoTableY } from '../lib/exportPdf';
+import { isDemoMode } from '../lib/storage';
 import type { Unit, TemperatureRecord, DailyNote, TempScreen } from './types';
 
 function migrateUnits(raw: unknown[]): Unit[] {
@@ -48,10 +49,14 @@ interface Props {
 }
 
 export function TempLogProvider({ recorder, children }: Props) {
-  const [units, setUnits] = useLocalStorage<Unit[]>('cafe-tl-units', migrateUnits([
-    { id: '1', name: 'Fridge 1', minTemp: 0, maxTemp: 5 },
-    { id: '2', name: 'Fridge 2', minTemp: 0, maxTemp: 5 },
-  ]));
+  const [units, setUnits] = useLocalStorage<Unit[]>('cafe-tl-units', migrateUnits(
+    isDemoMode()
+      ? [
+          { id: '1', name: 'Fridge 1', minTemp: 0, maxTemp: 5 },
+          { id: '2', name: 'Fridge 2', minTemp: 0, maxTemp: 5 },
+        ]
+      : [],
+  ));
   const [records, setRecords] = useLocalStorage<TemperatureRecord[]>('cafe-tl-records', []);
   const [notes, setNotes] = useLocalStorage<DailyNote[]>('cafe-tl-notes', []);
   const [screen, setScreen] = useLocalStorage<TempScreen>('cafe-tl-screen', 'landing');

@@ -32,6 +32,10 @@ export const STORAGE_KEYS = {
   kitchenTasks: 'kaio-kitchen-tasks-v1',
   missedTasks: 'kaio-missed-tasks-v1',
   diaryMoves: 'kaio-diary-moves-v1',
+  demoMode: 'kaio-demo-mode',
+  setupComplete: 'kaio-setup-complete',
+  lastBackupAt: 'kaio-last-backup-at',
+  correctiveActions: 'kaio-corrective-actions-v1',
 } as const;
 
 export function isKaioStorageKey(key: string): boolean {

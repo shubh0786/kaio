@@ -4,6 +4,9 @@ import {
   CalendarCheck, Download, Smartphone, Shield, ChevronDown, Check, ArrowRight,
   BookOpen, Snowflake, Settings, MessageSquareWarning,
 } from 'lucide-react';
+import { KaioLogo, KaioMark } from './KaioLogo';
+import { loadStr } from '../lib/storage';
+import { STORAGE_KEYS } from '../lib/storageKeys';
 
 interface LandingPageProps {
   onEnterApp: () => void;
@@ -94,7 +97,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 }
 
 export default function LandingPage({ onEnterApp }: LandingPageProps) {
-  const iconUrl = `${import.meta.env.BASE_URL}kaio-icon.svg`;
+  const dark = loadStr(STORAGE_KEYS.theme) === 'dark';
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -109,12 +112,12 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
       {/* Nav */}
       <header
         className="sticky top-0 z-50 backdrop-blur-md"
-        style={{ background: 'rgba(242, 247, 245, 0.85)', borderBottom: '1px solid var(--border)' }}
+        style={{ background: dark ? 'rgba(15, 27, 45, 0.85)' : 'rgba(246, 248, 251, 0.85)', borderBottom: '1px solid var(--border)' }}
       >
         <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <img src={iconUrl} alt="" className="w-8 h-8 rounded-full" style={{ border: '2px solid var(--gold)' }} />
-            <span className="text-sm font-medium tracking-[3px]" style={{ color: 'var(--navy)', fontFamily: "'DM Sans', sans-serif" }}>KAIO</span>
+            <KaioMark size={32} className="rounded-lg" />
+            <KaioLogo dark={dark} className="h-7 w-auto" />
           </div>
           <nav className="hidden sm:flex items-center gap-6">
             <button type="button" onClick={() => scrollTo('features')} className="text-sm" style={{ color: 'var(--text-muted)' }}>Features</button>
@@ -136,16 +139,16 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
       <section className="relative overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(20, 184, 166, 0.12), transparent)' }}
+          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(34, 197, 94, 0.12), transparent)' }}
         />
         <div className="max-w-5xl mx-auto px-4 pt-16 pb-20 md:pt-24 md:pb-28 text-center relative">
-          <img src={iconUrl} alt="Kaio" className="w-16 h-16 rounded-full mx-auto mb-6" style={{ border: '3px solid var(--gold)' }} />
+          <KaioMark size={72} className="rounded-2xl mx-auto mb-6" />
           <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: 'var(--gold)' }}>
             Free MPI compliance for NZ hospitality
           </p>
           <h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
-            style={{ color: 'var(--navy)', fontFamily: "'DM Sans', sans-serif" }}
+            style={{ color: 'var(--navy)', fontFamily: "'Poppins', sans-serif" }}
           >
             Food safety, sorted.
           </h1>
@@ -181,7 +184,7 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
       {/* Problem */}
       <section className="py-16 md:py-20" style={{ background: 'var(--bg-card)' }}>
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--navy)', fontFamily: "'DM Sans', sans-serif" }}>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--navy)', fontFamily: "'Poppins', sans-serif" }}>
             Paper binders don&apos;t pass verifications.<br className="hidden sm:block" /> $90/month apps don&apos;t fit small cafes.
           </h2>
           <p className="text-base leading-relaxed mb-4" style={{ color: 'var(--text-muted)' }}>
@@ -202,7 +205,7 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
       <section id="features" className="py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: 'var(--navy)', fontFamily: "'DM Sans', sans-serif" }}>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: 'var(--navy)', fontFamily: "'Poppins', sans-serif" }}>
               Everything MPI expects. Nothing you don&apos;t.
             </h2>
           </div>
@@ -234,7 +237,7 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
       {/* Two modes */}
       <section id="modes" className="py-16 md:py-20" style={{ background: 'var(--bg-card)' }}>
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: 'var(--navy)', fontFamily: "'DM Sans', sans-serif" }}>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: 'var(--navy)', fontFamily: "'Poppins', sans-serif" }}>
             Two modes. One app.
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -266,14 +269,13 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
       <section className="py-14" style={{ background: 'var(--navy)' }}>
         <div className="max-w-3xl mx-auto px-4 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: 'var(--gold-light)' }}>
-            Deadline: 30 April 2026
+            Paperless food safety
           </p>
-          <h2 className="text-xl md:text-2xl font-bold mb-3 text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-            MPI updated the Food Control Plan template
+          <h2 className="text-xl md:text-2xl font-bold mb-3 text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            Ditch the clipboard and ring binder
           </h2>
           <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.75)' }}>
-            If you&apos;re on the Simply Safe &amp; Suitable template, you need to update to version v39-00005.
-            It&apos;s the perfect time to switch from paper to digital records — and Kaio is free to start.
+            Every NZ cafe on a Food Control Plan must keep daily records for at least four years. Kaio makes it fast, digital, and audit-ready — free, on any phone, offline.
           </p>
           <button
             type="button"
@@ -281,7 +283,7 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
             className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-xl transition-opacity hover:opacity-90"
             style={{ background: 'white', color: 'var(--navy)' }}
           >
-            Get audit-ready before April 2026
+            Start free — no account needed
             <ArrowRight size={16} />
           </button>
         </div>
@@ -290,7 +292,7 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
       {/* Pricing */}
       <section id="pricing" className="py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-3" style={{ color: 'var(--navy)', fontFamily: "'DM Sans', sans-serif" }}>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-3" style={{ color: 'var(--navy)', fontFamily: "'Poppins', sans-serif" }}>
             Free forever. Upgrade when you need more.
           </h2>
           <p className="text-center text-sm mb-10" style={{ color: 'var(--text-muted)' }}>
@@ -374,7 +376,7 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
       {/* FAQ */}
       <section id="faq" className="py-16 md:py-20">
         <div className="max-w-2xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8" style={{ color: 'var(--navy)', fontFamily: "'DM Sans', sans-serif" }}>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8" style={{ color: 'var(--navy)', fontFamily: "'Poppins', sans-serif" }}>
             Frequently asked questions
           </h2>
           <div>
@@ -388,7 +390,7 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
       {/* Final CTA */}
       <section className="py-16 text-center" style={{ background: 'var(--bg-alt)' }}>
         <div className="max-w-xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-3" style={{ color: 'var(--navy)', fontFamily: "'DM Sans', sans-serif" }}>
+          <h2 className="text-2xl font-bold mb-3" style={{ color: 'var(--navy)', fontFamily: "'Poppins', sans-serif" }}>
             Ready to go paperless?
           </h2>
           <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>
@@ -411,7 +413,7 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6">
             <div>
-              <p className="text-sm font-bold tracking-[3px] mb-1" style={{ color: 'var(--navy)', fontFamily: "'DM Sans', sans-serif" }}>KAIO</p>
+              <KaioLogo dark={dark} className="h-7 w-auto mb-2" />
               <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Food safety, sorted.</p>
               <p className="text-xs mt-1" style={{ color: 'var(--text-faint)' }}>Built in Aotearoa New Zealand</p>
             </div>

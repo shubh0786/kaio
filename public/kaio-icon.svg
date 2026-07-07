@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-  <rect width="512" height="512" rx="108" fill="#0a5e5e"/>
-  <text x="256" y="310" text-anchor="middle" font-family="Inter, DM Sans, system-ui, sans-serif" font-weight="700" font-size="220" fill="white" letter-spacing="-8">kaio</text>
-  <path d="M295 115 L310 145 L340 110" stroke="#14b8a6" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <rect width="512" height="512" rx="108" fill="#16a34a"/>
+  <text x="256" y="310" text-anchor="middle" font-family="Poppins, system-ui, sans-serif" font-weight="700" font-size="220" fill="white" letter-spacing="-8">kaio</text>
+  <path d="M295 115 L310 145 L340 110" stroke="#86efac" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>
