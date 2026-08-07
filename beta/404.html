@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kaio — food safety, sorted.</title>
+    <script>
+      // GitHub Pages fallback for the beta deploy: unknown paths under /kaio/beta/
+      // redirect back to the beta app shell. Hash routing handles the rest.
+      (function () {
+        var l = window.location;
+        var base = '/kaio/beta/';
+        l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + base + l.hash);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

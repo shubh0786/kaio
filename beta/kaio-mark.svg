@@ -1,0 +1,21 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Kaio app icon</title>
+  <desc id="desc">Rounded Kaio icon with a K, check mark, and leaf accent.</desc>
+  <rect x="32" y="32" width="448" height="448" rx="116" fill="url(#bg)"/>
+  <rect x="56" y="56" width="400" height="400" rx="96" stroke="white" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M141 354V150H196V234L274 150H340L259 235L343 354H277L222 276L196 304V354H141Z" fill="white"/>
+  <path d="M321 133C354 101 392 105 418 114C408 153 375 175 333 169C327 157 324 145 321 133Z" fill="url(#leaf)"/>
+  <path d="M331 160C357 146 381 130 407 115" stroke="#0E7A39" stroke-width="10" stroke-linecap="round" opacity="0.45"/>
+  <path d="M307 319L342 354L421 264" stroke="#5FF083" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="bg" x1="78" y1="66" x2="453" y2="471" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08244A"/>
+      <stop offset="0.52" stop-color="#061C32"/>
+      <stop offset="1" stop-color="#0E7A39"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="321" y1="105" x2="419" y2="169" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#79F28B"/>
+      <stop offset="1" stop-color="#22C55E"/>
+    </linearGradient>
+  </defs>
+</svg>
