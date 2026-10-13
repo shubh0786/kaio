@@ -1,5 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-  <rect width="512" height="512" rx="108" fill="#0a5e5e"/>
-  <text x="256" y="310" text-anchor="middle" font-family="Inter, DM Sans, system-ui, sans-serif" font-weight="700" font-size="220" fill="white" letter-spacing="-8">kaio</text>
-  <path d="M295 115 L310 145 L340 110" stroke="#14b8a6" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Kaio app icon</title>
+  <desc id="desc">A nearly closed ring around a check mark, for daily checks done.</desc>
+  <rect x="32" y="32" width="448" height="448" rx="116" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="148" stroke="white" stroke-opacity="0.2" stroke-width="44"/>
+  <circle cx="256" cy="256" r="148" stroke="white" stroke-width="44" stroke-linecap="round" stroke-dasharray="790 930" transform="rotate(-90 256 256)"/>
+  <path d="M188 262L236 310L326 212" stroke="white" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="bg" x1="64" y1="48" x2="448" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2FA357"/>
+      <stop offset="1" stop-color="#145C2C"/>
+    </linearGradient>
+  </defs>
 </svg>
